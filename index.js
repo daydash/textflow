@@ -21,9 +21,9 @@ app.use(express.json());
 app.set("views", path.join(__dirname, "public"));
 app.set("view engine", "ejs");
 app.use(express.static("public"));
-app.get("/", async (req, res) => {
-	res.send(`Server is successfully started at port: ${PORT}`);
-});
+// app.get("/", async (req, res) => {
+// 	res.send(`Server is successfully started at port: ${PORT}`);
+// });
 
 const sendSms = async (phoneNumber, sms) => {
 	// Sending an SMS in one line
@@ -41,7 +41,7 @@ const sendSms = async (phoneNumber, sms) => {
 	return { ok: data?.ok, status: data?.status, message: data?.message };
 };
 
-app.get("/sendsms", async (req, res) => {
+app.get("/", async (req, res) => {
 	res.render("form");
 });
 app.post("/sendsms", async (req, res) => {
